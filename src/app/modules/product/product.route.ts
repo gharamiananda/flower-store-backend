@@ -6,8 +6,14 @@ import { ProductValidations } from "./product.validation";
 
 const router = express.Router();
 
-router.get("/", ProductControllers.getAllProducts);
-router.get("/filter-options", ProductControllers.getAllFilterOptions);
+router.get("/",
+auth(),
+ProductControllers.getAllProducts);
+
+router.get("/filter-options",
+auth(),
+
+ProductControllers.getAllFilterOptions);
 
 router.post(
   "/",
@@ -17,10 +23,15 @@ router.post(
   ProductControllers.createProduct
 );
 
-router.get("/:slug", ProductControllers.getSingleProduct);
+router.get("/:slug",
+auth(),
+
+ProductControllers.getSingleProduct);
 
 router.patch(
   "/:productId",
+  auth(),
+
   //   validateRequest(AcademicSemesterValidations.),
   ProductControllers.updateProduct
 );
@@ -28,6 +39,8 @@ router.patch(
 
 router.delete(
   "/delete-products",
+  auth(),
+
   //   validateRequest(AcademicSemesterValidations.),
   ProductControllers.deleteProducts
 );

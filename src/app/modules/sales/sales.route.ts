@@ -6,7 +6,10 @@ import { SalesValidations } from "./sales.validation";
 
 const router = express.Router();
 
-router.get("/", SalesControllers.getAllSales);
+router.get("/", 
+auth(),
+
+SalesControllers.getAllSales);
 router.post(
   "/",
   auth(),
@@ -15,10 +18,15 @@ router.post(
   SalesControllers.createSales
 );
 
-router.get("/:SalesId", SalesControllers.getSingleSales);
+router.get("/:SalesId",
+auth(),
+
+SalesControllers.getSingleSales);
 
 router.patch(
   "/:SalesId",
+  auth(),
+
   //   validateRequest(AcademicSemesterValidations.),
   SalesControllers.updateSales
 );

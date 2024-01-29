@@ -8,15 +8,6 @@ const productSchema = new mongoose_1.Schema({
         unique: true,
         required: true,
     },
-    slug: {
-        type: String,
-        unique: true,
-        required: true,
-    },
-    description: {
-        type: String
-    },
-    images: [String],
     createdBy: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",

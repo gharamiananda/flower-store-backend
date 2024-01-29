@@ -11,13 +11,9 @@ const product_controller_1 = require("./product.controller");
 const product_validation_1 = require("./product.validation");
 const router = express_1.default.Router();
 router.get("/", product_controller_1.ProductControllers.getAllProducts);
-router.get("/filter-options", product_controller_1.ProductControllers.getAllFilterOptions);
 router.post("/", (0, auth_1.default)(), (0, validateRequest_1.default)(product_validation_1.ProductValidations.createProductValidationSchema), product_controller_1.ProductControllers.createProduct);
-router.get("/:slug", product_controller_1.ProductControllers.getSingleProduct);
+router.get("/:productId", product_controller_1.ProductControllers.getSingleProduct);
 router.patch("/:productId", 
 //   validateRequest(AcademicSemesterValidations.),
 product_controller_1.ProductControllers.updateProduct);
-router.delete("/delete-products", 
-//   validateRequest(AcademicSemesterValidations.),
-product_controller_1.ProductControllers.deleteProducts);
 exports.ProductRoutes = router;

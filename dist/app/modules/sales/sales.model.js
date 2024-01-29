@@ -14,15 +14,6 @@ const salesSchema = new mongoose_1.Schema({
         type: Date,
         required: true,
     },
-    product: {
-        type: mongoose_1.Schema.Types.ObjectId,
-        ref: "Product",
-        required: true
-    },
-    totalPrice: {
-        type: Number,
-        required: true,
-    }
 }, {
     timestamps: true,
 });

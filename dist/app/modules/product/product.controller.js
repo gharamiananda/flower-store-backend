@@ -27,7 +27,7 @@ const createProduct = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     });
 }));
 const getAllProducts = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const Products = yield product_service_1.ProductServices.getAllProductsFromDB(req.query);
+    const Products = yield product_service_1.ProductServices.getAllProductsFromDB();
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
@@ -35,18 +35,9 @@ const getAllProducts = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
         data: { Products },
     });
 }));
-const getAllFilterOptions = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const Products = yield product_service_1.ProductServices.getFilterOptionsFromDB();
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: "Filter Options retrieved successfully",
-        data: { Products },
-    });
-}));
 const getSingleProduct = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { slug } = req.params;
-    const result = yield product_service_1.ProductServices.getSingleProductFromDB(slug);
+    const { ProductId } = req.params;
+    const result = yield product_service_1.ProductServices.getSingleProductFromDB(ProductId);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
@@ -54,10 +45,9 @@ const getSingleProduct = (0, catchAsync_1.default)((req, res) => __awaiter(void 
         data: result,
     });
 }));
-const deleteProducts = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const productsIds = req.body;
-    console.log('req.body :>> ', req.body);
-    const result = yield product_service_1.ProductServices.deleteProductsIntoDB(productsIds);
+const deleteProduct = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productId } = req.params;
+    const result = yield product_service_1.ProductServices.deleteProductIntoDB(productId);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
@@ -80,6 +70,5 @@ exports.ProductControllers = {
     getAllProducts,
     getSingleProduct,
     updateProduct,
-    deleteProducts,
-    getAllFilterOptions
+    deleteProduct,
 };

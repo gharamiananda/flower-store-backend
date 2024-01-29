@@ -15,7 +15,7 @@ const notFound_1 = __importDefault(require("./app/middlewares/notFound"));
 const app = (0, express_1.default)();
 //parsers
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({ credentials: true }));
+app.use((0, cors_1.default)({ origin: 'http://localhost:5173', credentials: true }));
 // application routes
 app.get("/", (req, res) => {
     res.status(200).json("Welcome to Flower Api store");

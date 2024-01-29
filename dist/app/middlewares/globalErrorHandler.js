@@ -80,6 +80,6 @@ const globalErrorHandler = (error, req, res, next) => {
             errorResponseObject[key] = myObject[key];
         }
     });
-    return res.status(statusCode).json(Object.assign({ success: false, errorSources }, errorResponseObject));
+    return res.status(statusCode).json(Object.assign({ success: false }, errorResponseObject));
 };
 exports.default = globalErrorHandler;
